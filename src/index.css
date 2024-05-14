@@ -57,3 +57,23 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.debug-box {
+	background-color: red;
+}
+
+.submit {
+	background-color: #237ac0;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	transition: background-color 0.2s ease-in-out;
+
+	&:hover {
+		background-color: #195e8f;
+	}
+
+	&:disabled {
+		background-color: #ccc;
+	}
+}

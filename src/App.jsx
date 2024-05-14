@@ -1,19 +1,46 @@
 import { useState } from 'react';
-import Card from "./components/Card"
+import Card from "./components/Card";
+import NewTodo from "./components/NewTodo";
 
 function App() {
-  const [test, setTest] = useState(false);
+  const [todos, setTodos] = useState([]);
+
+  const handleAddNewTodo = ({
+    title,
+    description,
+  }) => {
+    const newTodoItem = {
+      id: Math.random().toString(),
+      title,
+      description,
+      checked: false,
+    };
+
+    setTodos((prevTodos) => {
+      return [...prevTodos, newTodoItem];
+    });
+
+  }
 
   return (
     <>
-      <Card
-        id={1}
-        title="Hello"
-        description="Test this out"
-        checked={test}
-        toggleDone={(event) => {
-          setTest(event.target.checked);
-        }} />
+      <NewTodo addNewTodo={handleAddNewTodo} />
+      {
+        todos.map((todo) => {
+          return (
+            <Card
+              id={todo.id}
+              key={todo.id}
+              title={todo.title}
+              description={todo.description}
+              checked={todo.checked}
+              toggleDone={(event) => {
+                // setTest(event.target.checked);
+              }}
+            />
+          );
+        })
+      }
     </>
   )
 }

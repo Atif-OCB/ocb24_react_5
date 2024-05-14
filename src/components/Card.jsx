@@ -18,9 +18,10 @@ const Card = (props) => {
       }}>
         <h2 style={{
           fontSize: '1rem',
+          fontWeight: 'bold',
         }}>{props.title}</h2>
         <p style={{
-          fontSize: '0.725rem',
+          fontSize: '0.625rem',
         }}>{props.description}</p>
       </label>
       <input

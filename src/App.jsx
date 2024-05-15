@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Card from "./components/Card";
 import NewTodo from "./components/NewTodo";
+import RegisterUser from './components/RegisterUser';
 
 const generateRandomHex = () => {
   return Math.floor(Math.random() * 16777215).toString(16);
@@ -23,7 +24,8 @@ function App() {
     setTodos((prevTodos) => {
       return [...prevTodos, newTodoItem];
     });
-  }
+    // Call API untuk create todo
+  };
 
   const handleChecked = (event) => {
     const targetId = event.target.id;
@@ -50,6 +52,8 @@ function App() {
 
       return updatedTodos;
     })
+
+    // Call API untuk update todo
   };
 
   return (
@@ -59,6 +63,7 @@ function App() {
       gap: '1rem',
       padding: '2rem',
     }}>
+      <RegisterUser />
       <NewTodo addNewTodo={handleAddNewTodo} />
       {
         todos.map((todo) => {
@@ -78,4 +83,6 @@ function App() {
   )
 }
 
-export default App
+export default App;
+
+

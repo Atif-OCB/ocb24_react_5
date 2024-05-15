@@ -1,5 +1,7 @@
+import { registerUser } from "../api/auth";
+
 const RegisterUser = () => {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formContent = event.target.elements;
@@ -8,11 +10,14 @@ const RegisterUser = () => {
     const password = formContent.password.value;
 
     // Call API untuk register sini
+    const data = await registerUser({
+      username,
+      email,
+      password,
+    });
 
-    // props.addRegisterUser({
-    //   title,
-    //   description,
-    // });
+    const token = data.token;
+    if (token) window.localStorage.setItem('token', token);
 
     event.target.reset();
   };
